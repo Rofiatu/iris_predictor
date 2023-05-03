@@ -8,7 +8,6 @@ from sklearn import datasets
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import r2_score
 from sklearn.preprocessing import LabelEncoder
 import joblib
@@ -38,16 +37,16 @@ train_data = pd.concat([x_train, pd.Series(y_train)], axis = 1)
 test_data = pd.concat([x_test, pd.Series(y_test)], axis = 1)
 
 # create your model
-rfm = RandomForestClassifier()
-rfm.fit(x_train, y_train)
-y_pred = rfm.predict(x_test)
+logReg = LogisticRegression()
+logRegFitted = logReg.fit(x_train, y_train)
+y_pred = logRegFitted.predict(x_test)
 
 # using R2 score module from sklearn metrics for the goodness to fit information
 score = r2_score(y_test,y_pred)
 print(score)
 
 # saving the model using joblib
-joblib.dump(rfm, 'rfm_model.pkl')
+joblib.dump(logReg, 'Logistic_Model.pkl')
 
 # BEGIN IMPLEMENTATION USING STREAMLIT
 
@@ -83,7 +82,7 @@ if user_name != '':
 
         # modelling - import the model
 
-        model = joblib.load(open('rfm_model.pkl', 'rb'))
+        model = joblib.load(open('Logistic_Model.pkl', 'rb'))
         predict = st.sidebar.button('Predict my flower')
         
         # if metric == 'Slider' or metric == 'Direct Input' and predict:
