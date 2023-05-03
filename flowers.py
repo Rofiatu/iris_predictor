@@ -61,7 +61,7 @@ if user_name != '':
 elif user_name == '' and button:
     st.warning('Please enter your name to get started.')
 
-placeholder = Image.open(r'/Users/rofiatalli/Documents/data_science/python/model_deployment/streamlit/streamlit_models/model_2/iris/flower_images/placeholder.jpeg')
+placeholder = Image.open('flower_images/placeholder.jpeg')
 st.sidebar.image(placeholder)
 
 if user_name != '':
