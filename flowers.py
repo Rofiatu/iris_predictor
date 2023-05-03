@@ -15,7 +15,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # import data
-iris = pd.read_csv('/Users/rofiatalli/Documents/data_science/python/model_deployment/streamlit/streamlit_models/model_2/iris/iris.data.csv')
+iris = pd.read_csv('iris.data.csv')
 iris.head(3)
 
 # rename dataframe columns for ease of understanding
